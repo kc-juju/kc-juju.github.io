@@ -137,3 +137,9 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# --- 系統與開發工具額外補充 ---
+.DS_Store           # Mac 系統產生的縮圖暫存 (非常建議加上)
+Thumbs.db           # Windows 系統產生的縮圖暫存
+.vscode/            # 排除 VS Code 的個人設定資料夾
+venv
