@@ -1,0 +1,67 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import TabBar from "../components/TabBar.astro";
+import InfoCard from "../components/InfoCard.astro";
+
+// 引入外部參數
+import { styles } from "../constants/designTokens";
+import { weddingConfig, rsvpConfig } from "../constants/weddingConfig";
+import { navigationItems } from "../constants/navigation";
+---
+
+<Layout title={weddingConfig.siteTitle}>
+    <main class={styles.mainContainer}>
+        <section id="home">
+            <Hero {...weddingConfig.hero} />
+        </section>
+
+        <section id="story" class={styles.sectionWrapper}>
+            <div class="mb-16">
+                <h3 class={styles.sectionTitle}>婚禮盛宴</h3>
+                <p class={styles.paragraph}>
+                    這一天，我們決定攜手走向未來。<br />
+                    在這個充滿喜悅的時刻，希望能有您的見證與祝福。
+                </p>
+            </div>
+
+            <div id="location" class="grid md:grid-cols-2 gap-10 text-left">
+                <InfoCard {...weddingConfig.info.time} />
+                <InfoCard {...weddingConfig.info.location} />
+            </div>
+        </section>
+
+        <section id="rsvp" class={styles.rsvp.section}>
+            <div class={styles.rsvp.container}>
+                <h3 class={styles.rsvp.title}>
+                    {rsvpConfig.title}
+                </h3>
+                <p class={styles.rsvp.description}>
+                    {rsvpConfig.descriptionPrefix}
+                    <span class={styles.rsvp.deadlineHighlight}>
+                        {rsvpConfig.deadline}
+                    </span>
+                    {rsvpConfig.descriptionSuffix}
+                </p>
+
+                <a
+                    href={rsvpConfig.formUrl}
+                    target="_blank"
+                    class={styles.primaryBtn}
+                >
+                    {rsvpConfig.buttonText}</a
+                >
+            </div>
+        </section>
+
+        <footer class={styles.footerText}>
+            <p>
+                Made with Love © 2026 {weddingConfig.hero.groom} & {
+                    weddingConfig.hero.bride
+                }
+            </p>
+        </footer>
+
+        <TabBar items={navigationItems} />
+    </main>
+</Layout>

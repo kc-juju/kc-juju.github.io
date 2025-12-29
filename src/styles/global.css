@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-bg: #f9f7f2; /* 米白底色 */
+    --color-primary: #b8860b; /* 金銅色 */
+    --color-text: #333333; /* 深灰字 */
+    --font-playfair: "Playfair Display", serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: "Noto Serif TC", serif;
+    scroll-behavior: smooth;
+}
+
+/* 針對 F12 的一點點保護：防止右鍵存圖 */
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+
+/* 讓中文部分自動套用 Noto Serif */
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+a {
+    font-family: "Playfair Display", "Noto Serif TC", serif;
+}
+
+.serif-italic {
+    font-family: var(--font-playfair);
+    font-style: italic;
+}
+
+/* 自定義動畫：導覽列滑入 */
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 100px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}

@@ -1,0 +1,42 @@
+---
+import type { NavItem } from "../constants/navigation";
+import { styles } from "../constants/designTokens"; // 引入樣式常量
+
+interface Props {
+    items: NavItem[];
+}
+
+const { items } = Astro.props;
+const tabStyles = styles.tabBar; // 取得導覽列專用樣式
+---
+
+<nav class={tabStyles.nav}>
+    <div class={tabStyles.container}>
+        {
+            items.map((item) => (
+                <a
+                    href={item.href}
+                    class={tabStyles.item}
+                    aria-label={item.label}
+                >
+                    <div class={tabStyles.iconBox}>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class={tabStyles.svg}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d={item.iconPath}
+                            />
+                        </svg>
+                    </div>
+                    <span class={tabStyles.label}>{item.label}</span>
+                </a>
+            ))
+        }
+    </div>
+</nav>

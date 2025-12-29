@@ -1,0 +1,40 @@
+---
+import { styles } from "../constants/designTokens";
+
+interface Props {
+    label: string;
+    title: string;
+    subtitle: string;
+    link?: string;
+    linkText?: string;
+}
+
+const { label, title, subtitle, link, linkText = "開啟地圖" } = Astro.props;
+
+const cardStyles = styles.infoCard; // 取得卡片專用樣式
+---
+
+<div class={cardStyles.container}>
+    <div class={cardStyles.label}>
+        {label}
+    </div>
+    <p class={cardStyles.title}>
+        {title}
+    </p>
+    <p class={cardStyles.subtitle}>
+        {subtitle}
+    </p>
+
+    {
+        link && (
+            <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={cardStyles.link}
+            >
+                {linkText}
+            </a>
+        )
+    }
+</div>
